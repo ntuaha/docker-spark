@@ -5,18 +5,16 @@ import sys
 # docker exec -it dockerspark_master_1 ./bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0 /tmp/data/test3.py $DOCKER_MAIN_IP
 #in_ip = "192.168.2.168:2181"
 
-# DOCKER_MAIN_IP
 if __name__ == '__main__':
-    if len(sys.argv) != 1:
+    if len(sys.argv) != 2:
         print("Usage: kafka_wordcount.py <ip>", file=sys.stderr)
         exit(-1)
-    ip = sys.argv[0]
-
-    in_ip = "%s:32781,%s:32782,%s:32783"%(ip,ip,ip)
+    ip = sys.argv[1]
+    in_ip = "%s:32771,%s:32772,%s:32773"%(ip,ip,ip)
     in_topic = "in"
 
     #out_ip = "192.168.2.168:2182"
-    out_ip = "%s:32784,%s:32785,%s:32786"%(ip,ip,ip)
+    out_ip = "%s:32774,%s:32775,%s:32776"%(ip,ip,ip)
     out_topic = "out"
 
     spark = SparkSession.builder.appName("StructuredNetInOut").getOrCreate()

@@ -3,3 +3,8 @@
 *.py
 data/.metadata.crc
 data/metadata
+data/commits/
+data/commits/
+data/._spark-sql-kafka-0-10_2.11-2.2.0.jar
+data/offsets/
+data/sources/

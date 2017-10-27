@@ -10,11 +10,11 @@ if __name__ == '__main__':
         print("Usage: kafka_wordcount.py <ip>", file=sys.stderr)
         exit(-1)
     ip = sys.argv[1]
-    in_ip = "%s:32771,%s:32772,%s:32773"%(ip,ip,ip)
+    in_ip = "%s:32776,%s:32775,%s:32774"%(ip,ip,ip)
     in_topic = "in"
 
     #out_ip = "192.168.2.168:2182"
-    out_ip = "%s:32774,%s:32775,%s:32776"%(ip,ip,ip)
+    out_ip = "%s:32779,%s:32778,%s:32777"%(ip,ip,ip)
     out_topic = "out"
 
     spark = SparkSession.builder.appName("StructuredNetInOut").getOrCreate()
@@ -23,6 +23,7 @@ if __name__ == '__main__':
         .readStream.format("kafka") \
         .option("kafka.bootstrap.servers", in_ip) \
         .option("subscribe", in_topic) \
+        .option("failOnDataLoss","false") \
         .load()
     #df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")    
 
